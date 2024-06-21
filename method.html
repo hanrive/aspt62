@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Methodology</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="index.html">Green Guardians</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="method.html">Methodology</a></li>
+                                <li><a href="solution.html">Final Solution</a></li>
+								<li><a href="elements.html">Elements</a></li>
+								<li>
+								<li><a href="#">Product</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Methodology</h2>
+								<p>Phasellus non pulvinar erat. Fusce tincidunt nisl eget ipsum.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<!-- Section One-->
+
+									<h3 class="major">Abstract</h3>
+									<p>This project aims to enhance the current state of bathymetric data for lakes in Ontario, 
+										which is essential for resource management and research purposes. The existing data, 
+										collected from 1948 to 1995, primarily consists of bathymetric points rather than contour 
+										lines. Many lakes still do not have contour lines generated due to the time-consuming nature 
+										of hand digitization and manually applying tools. In partnership with the Provincial Mapping 
+										Unit of the Ontario Ministry of Natural Resources and Forestry, this project seeks to develop 
+										a semi-automated process using Python scripts to generate contour lines from point data. 
+										This innovative approach aims to provide easily accessible bathymetric contours for end 
+										users and accommodate future input of bathymetric points. Specific objectives include 
+										creating a standalone script to batch process multiple lakes, an ArcGIS Python Toolbox to 
+										process a single lake, a hosted feature layer to display project progress and statistics on 
+										ArcGIS Dashboard and implementing a map generation script to create a series of static 
+										maps for the generated lake contours. Through this effort, we address the critical need for 
+										updated bathymetric mapping to support the client’s and end users’ needs. The contour 
+										lines generated from the scripts ensure fast processing and accurate results. The static 
+										maps provide visualization for the end user to understand the lake contours. Our 
+										collaboration aims to update and enhance the bathymetric data available for lakes in 
+										Ontario and establish a process that can be applied to future data updates.</p> <br>
+										<p> <em>Keywords: Bathymetric Mapping, Geographic Information Systems, Spatial Interpolation, 
+										Ontario Lakes </em>
+										</p>
+
+									<!-- Section Two-->
+
+										<h3 class="major">Obtaining Data and Pre-Processing</h3>
+										<p>Data for the contour generator program is sourced from the Ontario GeoHub, including three main bathymetry data classes:
+											<ul>
+											<li>Bathymetry Index (BATHYMIX): Contains lake boundary polygons for lakes with available bathymetry data. Can be found <a href="https://geohub.lio.gov.on.ca/datasets/6b0a8cdbd9864d20a5a5d5921f6ed7ba_31/explore?location=47.977714%2C-84.723027%2C3.93">here.</a></li>
+											<li>Bathymetry Line (BATHYML): Includes depth contours derived through various methods. Can be found <a href="https://geohub.lio.gov.on.ca/datasets/8c66fb7f8be242f38fa11c096bd04da8_30/explore?location=48.505444%2C-84.732487%2C3.93">here.</a></li>
+											<li>Bathymetry Point (BATHYMP): Provides point data indicating water depth measurements. Can be found <a href="https://geohub.lio.gov.on.ca/datasets/787829659cb64c389af35848a4da9c6d_27/explore?location=49.874140%2C-84.745000%2C3.73">here.</a></li>
+										  </ul>
+										  These datasets are managed by the Ministry of Natural Resources and Forestry (MNRF). The point data are collected via traditional transects with echo-sounders and GPS or more modern sonar methods. The program processes these datasets to sort and prepare them for generating accurate contours for individual lakes.</p>	
+									
+									<!-- Section Three -->
+
+									<h3 class="major">Interpolation Techniques</h3>
+									<p>The program uses various interpolation methods to create bathymetric contours from discrete point data. Key methods explored include:
+										<ul>
+										<li><b>Inverse Distance Weighted (IDW):</b> Assumes values decrease with distance, limiting range to input data and potentially distorting peaks and valleys.</li>
+										<li><b>Spline:</b> Smooths the surface through input points, ideal for gentle variations but may not fit rapidly changing underwater terrains.</li>
+										<li><b>Kriging:</b> A deterministic technique based on input values, useful for correlating depth but not directionally predictive for lake depths.</li>
+										<li><b>Trend:</b> Uses polynomial interpolation for gradual changes but may introduce inaccuracy with extreme values.</li>
+										<li><b>Topo to Raster:</b> Specialized for hydrologically correct digital elevation models, focusing on streams and ridges, often unsuitable for areas of low relief.</li>
+										<li><b>Natural Neighbor:</b> Preserves input values and avoids extreme output, providing a smooth raster surface.</li>
+										<li><b>TIN (Triangulated Irregular Network):</b> Preferred for generating reliable contours, converting a TIN surface to a raster for smoother results.</li>
+									  </ul>
+									It was ultimately decided within the group and with the advice from our client that we would focus on developing contours based on TIN, due to the accuracy of the results.</p>	
+
+									<section class="features">
+										<article>
+											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<h3 class="major">Sed feugiat lorem</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+											<h3 class="major">Nisl placerat</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+									</section>
+								
+									<!-- Section Four -->
+
+									<h3 class="major">Main Script</h3>
+									<p>The main script of the contour generator program is divided into several key stages, each focusing on different aspects of data processing and contour generation.</p>
+
+									<p><b>Pre-Processing:</b> The initial step involves using Model Builder to select and export lake-specific data from the broader bathymetric datasets. This process extracts lake polygons and corresponding depth points, ensuring that each lake is prepared individually for further analysis. The exported polygon and point files are crucial, as they set the stage for creating accurate contours by maintaining the lake's boundary in subsequent steps.</p>
+										
+									<p><b>Spatial Analysis and Spatial Interpolation:</b> In this phase, the script utilizes a systematic methodology involving the creation of a Triangulated Irregular Network (TIN). The TIN is constructed using point elevation data (with depth values as height fields) and lake boundary data as a “Hard Clip.” This ensures that the TIN surface model represents depth as a continuous surface within the lake's defined boundary. Once the TIN is generated, it is converted to a raster format using the TIN to Raster tool, employing the Natural Neighbor interpolation method. This method balances accuracy and processing speed, producing a smooth and continuous output.</p>
+										
+									<p><b>Contour Generation and Refinement:</b> After generating the raster layer, the script proceeds to create contour lines using the Contour tool. The user specifies the contour interval, constrained to integer values between 1 and 100, ensuring appropriateness for the typical depth ranges of lakes in Ontario. The script then applies a topology rule to ensure the accuracy of the contour lines, flagging any results that violate the topology. Additionally, a Buffer tool is employed to remove unwanted short contour lines around shorelines, a common issue due to data inaccuracies. The script further smooths the contour lines using the Polynomial Approximation with Exponential Kernel (PAEK) method, with tolerance factors adjusted based on the lake's size to maintain precision and topological integrity.</p>
+										
+									<p><b>Differences Between Standalone Script and Toolbox:</b> The standalone script and the toolbox variant differ mainly in their handling of input files and their intended use cases. The standalone script processes multiple lakes within a single file, requiring the Ontario Hydro Network (OHN) Waterbody layer for accurate lake boundaries. In contrast, the toolbox is designed to handle pre-prepared lake boundaries from the OHN Waterbody, focusing on single-lake processing.</p>
+										
+									<p><b>Cartographic Design:</b> The final component of the script automates the creation of map layouts for each processed lake using ArcGIS Pro. Users are prompted to provide paths for the lake boundary feature class, a template ArcGIS Pro project file, and an output folder for the PDF maps. The script opens the specified ArcGIS Pro project, identifies the main map frame, and ensures the visibility of the lake boundary layer. It then iterates through each lake, adjusting the map extent and scale, updating layout elements, and exporting the final map to PDF. This automation streamlines the creation of consistent, well-formatted maps tailored to each lake's unique characteristics.</p>
+
+									<section class="features">
+										<article>
+											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<h3 class="major">Sed feugiat lorem</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+											<h3 class="major">Nisl placerat</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+									</section>
+								</div>
+							</div>
+					</section>
+
+				<!--	Footer -->
+				<section id="footer">
+					<div class="inner">
+						<!-- <h2 class="major">Get in touch</h2>
+						<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Untitled Inc<br />
+								1234 Somewhere Road Suite #2894<br />
+								Nashville, TN 00000-0000
+							</li>
+							<li class="icon solid fa-phone">(000) 000-0000</li>
+							<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
+							<li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
+							<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
+							<li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
+						</ul>
+					-->
+						<ul class="copyright">
+							<li>&copy; GREEN GUARDIANS. All rights reserved.</li><li>This website is presented in partial fulfillment of the academic requirements for APST 62, GIS Collaborative Project course, Fleming College.</li>
+						</ul>
+					</div>
+				</section>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
