@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <!--
-        Template taken from: https://html5up.net/solid-state
+	Template taken from: https://html5up.net/solid-state
                         Solid State by HTML5 UP
-                            html5up.net | @ajlkn
-                            Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	                    html5up.net | @ajlkn
+	                    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
     Edited and content changed by GREEN GUARDIANS, June 19, 2024.
 -->
@@ -104,21 +104,32 @@
 										<li><b>TIN (Triangulated Irregular Network):</b> Preferred for generating reliable contours, converting a TIN surface to a raster for smoother results.</li>
 									  </ul>
 									It was ultimately decided within the group and with the advice from our client that we would focus on developing contours based on TIN, due to the accuracy of the results.</p>	
+									<p>Below are images of some of the results from our method exploration:
+									From left to right is: Kriging, Natural Neighbor, Inverse Distance Weighting, and TIN.
+									</p>
 
-									<section class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<h3 class="major">Sed feugiat lorem</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3 class="major">Nisl placerat</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-									</section>
+<!-- The four columns -->
+	<div class="row">
+		<div class="column">
+		<img src="images/kriging.png" alt="Method: Kriging" style="width:100%" onclick="myFunction(this);">
+		</div>
+		<div class="column">
+		<img src="images/nn.png" alt="Method: Natural Neighbor" style="width:100%" onclick="myFunction(this);">
+		</div>
+		<div class="column">
+		<img src="images/idw.png" alt="Method: Inverse Distance Weighting
+		" style="width:100%" onclick="myFunction(this);">
+		</div>
+		<div class="column">
+		<img src="images/tin.png" alt="Method: TIN" style="width:100%" onclick="myFunction(this);">
+		</div>
+	</div>
+	
+	<div class="container">
+		<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+		<img id="expandedImg" style="width:100%">
+		<div id="imgtext"><span></span></div>
+	</div>
 								
 									<!-- Section Four -->
 
@@ -134,21 +145,6 @@
 									<p><b>Differences Between Standalone Script and Toolbox:</b> The standalone script and the toolbox variant differ mainly in their handling of input files and their intended use cases. The standalone script processes multiple lakes within a single file, requiring the Ontario Hydro Network (OHN) Waterbody layer for accurate lake boundaries. In contrast, the toolbox is designed to handle pre-prepared lake boundaries from the OHN Waterbody, focusing on single-lake processing.</p>
 										
 									<p><b>Cartographic Design:</b> The final component of the script automates the creation of map layouts for each processed lake using ArcGIS Pro. Users are prompted to provide paths for the lake boundary feature class, a template ArcGIS Pro project file, and an output folder for the PDF maps. The script opens the specified ArcGIS Pro project, identifies the main map frame, and ensures the visibility of the lake boundary layer. It then iterates through each lake, adjusting the map extent and scale, updating layout elements, and exporting the final map to PDF. This automation streamlines the creation of consistent, well-formatted maps tailored to each lake's unique characteristics.</p>
-
-									<section class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<h3 class="major">Sed feugiat lorem</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3 class="major">Nisl placerat</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-									</section>
 								</div>
 							</div>
 					</section>
